@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john@gmail.com",
+      "phone": "+380939999999",
+      "dateOfBirth": "01.03.1990"
+    },
+    {
+      "id": "2",
+      "firstName": "Oleksandr",
+      "lastName": "Kuzmenko",
+      "email": "sanchahous@gmail.com",
+      "phone": "+380939477574",
+      "dateOfBirth": "01.05.1995"
+    },
+    {
+      "firstName": "Test Name",
+      "lastName": "Test Last name",
+      "email": "test@gmail.com",
+      "phone": "380999999999",
+      "dateOfBirth": "05/12/1995",
+      "id": "dv9_0Z1"
+    }
+  ]
+}
