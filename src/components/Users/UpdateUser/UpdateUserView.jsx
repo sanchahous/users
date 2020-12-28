@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import {Controller} from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css'
 import ReactDatepicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+import moment from 'moment';
 
 import {errorMessages, regExp} from "../UserStaticData/UserStaticData";
 
 import formStyles from "../../../_styles/form.styl";
 
-export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, register, startDate}) => {
+export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, register, startDate, currentUserInfo}) => {
+  const{firstName, lastName, email, phone } = currentUserInfo || '';
+  const dateOfBirth = currentUserInfo && currentUserInfo.dateOfBirth;
+  const formattedDateOfBirth = moment(dateOfBirth, 'DD/MM/yyyy').toDate();
   const {firstName: firstNameError, lastName: lastNameError, email: emailError, phone: phoneError, dateOfBirth: dateOfBirthError}  = errors;
 
   const {message: firstNameErrorMessage, type: firstNameErrorType} = firstNameError || {};
@@ -23,6 +30,7 @@ export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, registe
       <div className={formStyles.formGroup}>
         <label htmlFor="firstName">First name</label>
         <input
+          defaultValue={firstName}
           id="firstName"
           name="firstName"
           ref={register({
@@ -45,6 +53,7 @@ export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, registe
       <div className={formStyles.formGroup}>
         <label htmlFor="lastName">Last name</label>
         <input
+          defaultValue={lastName}
           id="lastName"
           name="lastName"
           ref={register({
@@ -66,7 +75,10 @@ export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, registe
       <div className={formStyles.formGroup}>
         <label htmlFor="email">email</label>
         <input
-          id="email" name="email" ref={register({
+          defaultValue={email}
+          id="email"
+          name="email"
+          ref={register({
           required: "required",
           pattern: {
             value: regExp.email,
@@ -79,16 +91,11 @@ export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, registe
           {emailError && <span role="alert">{emailErrorMessage}</span>}
         </div>
       </div>
-
-      <div className={formStyles.formGroup}>
+      { phone &&
+        <div className={formStyles.formGroup}>
         <label htmlFor="phone">phone</label>
         <Controller
-          defaultValue=""
-          as={
-            <PhoneInput
-              id="phone" country={'ua'} placeholder="Enter phone number" inputRef={register}
-            />
-          }
+          defaultValue={phone}
           name="phone"
           control={control}
           rules={{
@@ -99,7 +106,16 @@ export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, registe
             minLength: 9,
             maxLength: 14,
           }}
-          type='text'
+          render={({onChange, onBlur, value}) => (
+            <PhoneInput
+              id="phone"
+              country={'ua'}
+              placeholder="Enter phone number"
+              value={ phone || value }
+              onChange={onChange}
+              onBlur={onBlur}
+            />
+          )}
         />
         <div>
           {phoneError && <span role="alert">{phoneErrorMessage}</span>}
@@ -107,27 +123,35 @@ export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, registe
           {phoneErrorType === "maxLength" && <span role="alert">{errorMessages.maxLength}</span>}
         </div>
       </div>
+      }
 
-      <div className={formStyles.formGroup}>
-        <Controller
-          defaultValue={startDate} control={control} name="dateOfBirth" rules={{
-          required: errorMessages.dateOfBirth,
-        }} render={({onChange, onBlur, value}) => (
-          <ReactDatepicker
-            onChange={onChange}
-            onBlur={onBlur}
-            selected={value || startDate}
-            dateFormat="dd/MM/yyyy"
-            peekNextMonth
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-            minDate={new Date("01/01/1960")}
+      { dateOfBirth &&
+        <div className={formStyles.formGroup}>
+          <Controller
+            defaultValue={formattedDateOfBirth || startDate}
+            control={control}
+            name="dateOfBirth"
+            rules={{
+              required: errorMessages.dateOfBirth,
+            }}
+            render={({onChange, onBlur, value}) => (
+              <ReactDatepicker
+                onChange={onChange}
+                onBlur={onBlur}
+                selected={value || startDate}
+                dateFormat="dd/MM/yyyy"
+                peekNextMonth
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
+                minDate={new Date("01/01/1960")}
+              />
+            )}
           />
-        )}
-        />
-        {dateOfBirthError && <span role="alert">{dateOfBirthErrorMessage}</span>}
-      </div>
+          {dateOfBirthError && <span role="alert">{dateOfBirthErrorMessage}</span>}
+        </div>
+      }
+
 
       <button type="submit">SUBMIT</button>
     </form>

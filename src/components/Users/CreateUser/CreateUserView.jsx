@@ -1,7 +1,9 @@
 import React from "react";
 import {Controller} from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css'
 import ReactDatepicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import {errorMessages, regExp} from "../UserStaticData/UserStaticData";
 

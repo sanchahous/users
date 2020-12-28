@@ -1,7 +1,7 @@
 import {userUpdateConstants} from '../../../_constants';
 import {userUpdateService} from '../../../_services';
 
-const update = (data) => {
+const update = (data, id) => {
   const request = () => {
     return {
       type: userUpdateConstants.USER_UPDATE_REQUEST
@@ -22,7 +22,7 @@ const update = (data) => {
 
   return dispatch => {
     dispatch( request() );
-    userUpdateService.update(data)
+    userUpdateService.update(data, id)
       .then(
         info => dispatch( success( info ) ),
       ).catch(
