@@ -1,7 +1,7 @@
 import {usersListConstants} from '../../../_constants';
 import {usersListService} from '../../../_services';
 
-const getList = (searchResult, paginationResult) => {
+const getList = (searchResult) => {
     const request = () => {
         return {
             type: usersListConstants.USERS_LIST_REQUEST
@@ -22,7 +22,7 @@ const getList = (searchResult, paginationResult) => {
 
     return dispatch => {
         dispatch( request() );
-        usersListService.getList(searchResult, paginationResult)
+        usersListService.getList(searchResult)
             .then(
                 info => dispatch( success( info ) ),
             ).catch(

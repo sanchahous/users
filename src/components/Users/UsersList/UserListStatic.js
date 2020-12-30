@@ -20,3 +20,5 @@ export const usersHeadTitles = [
       value: 'birth date'
   }
 ];
+
+export const ITEMS_PER_PAGE = 5;

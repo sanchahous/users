@@ -1,15 +1,18 @@
 import React from "react";
 
+import localStyles from './InputFilter.styl'
+
 export const InputFilter = (props) => {
-  const {name, handleChange, handleSubmit, searchResult} = props;
+  const {name, value, handleChange, handleSubmitOnBlur, searchResult} = props;
 
   return (
     <input
       type="text"
+      className={localStyles.searchControl}
       name={name}
-      placeholder="Search value"
+      placeholder=''
       value={searchResult ? searchResult[name] : '' }
-      onBlur={handleSubmit}
+      onBlur={handleSubmitOnBlur}
       onChange={handleChange}
     />
   )

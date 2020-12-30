@@ -12,11 +12,16 @@ export const CreateUser = () => {
     mode: 'onSubmit',
     reValidateMode: 'onBlur',
     criteriaMode: "firstError"
-  });
+  }); //react-hook-form properties
   const [startDate] = useState(new Date());
   const dispatch = useDispatch();
 
+  /**
+   * @param {object} data - firstName, lastName, email, phone, dateOfBirth
+   * @returns {Promise<void>} - action (success or failure) about result of creating user
+   */
   const onSubmit = async data => {
+    console.log('data', data)
     const formData = {
       ...data,
       dateOfBirth: moment(data.dateOfBirth).format('DD/MM/yyyy'),

@@ -12,3 +12,5 @@ export const errorMessages = {
   minLength: 'Your input does not match minLength',
   maxLength: 'Your input does not match maxLength',
 }
+
+export const MIN_DATE_OF_BIRTH = '01/01/1960';

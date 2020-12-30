@@ -6,7 +6,7 @@
       "lastName": "Doe",
       "email": "john@gmail.com",
       "phone": "+380939999999",
-      "dateOfBirth": "01.03.1990"
+      "dateOfBirth": "01/03/1990"
     },
     {
       "id": "2",
@@ -14,7 +14,7 @@
       "lastName": "Kuzmenko",
       "email": "sanchahous@gmail.com",
       "phone": "+380939477574",
-      "dateOfBirth": "01.05.1995"
+      "dateOfBirth": "01/05/1995"
     },
     {
       "firstName": "Test Name Actual Update",
@@ -143,6 +143,14 @@
       "phone": "+998435435345",
       "dateOfBirth": "30/12/1996",
       "id": "10asdasda"
+    },
+    {
+      "firstName": "dsfsd",
+      "lastName": "dsf sdf",
+      "email": "sdfsdfsdf@gmail.com",
+      "phone": "+380934444444",
+      "dateOfBirth": "01/01/1992",
+      "id": "nbaur8y"
     }
   ]
 }

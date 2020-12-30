@@ -5,7 +5,7 @@ import 'react-phone-input-2/lib/style.css'
 import ReactDatepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import {errorMessages, regExp} from "../UserStaticData/UserStaticData";
+import {errorMessages, MIN_DATE_OF_BIRTH, regExp} from "../UserStaticData/UserStaticData";
 
 import formStyles from "../../../_styles/form.styl";
 
@@ -124,7 +124,7 @@ export const CreateUserView = ({handleSubmit, onSubmit, errors, control, registe
             showMonthDropdown
             showYearDropdown
             dropdownMode="select"
-            minDate={new Date("01/01/1960")}
+            minDate={new Date(MIN_DATE_OF_BIRTH)}
           />
         )}
         />

@@ -1,7 +1,7 @@
 import {handleResponse} from "../../../_helpers";
 import {jsonHeader} from "../../../_helpers";
 
-const getList = (searchResult, paginationResult) => {
+const getList = (searchResult) => {
     const listRequestOptions = {
         method: 'GET',
         headers: jsonHeader()
@@ -11,13 +11,7 @@ const getList = (searchResult, paginationResult) => {
             return `${index > 0 ? '&' : ''}${key}=${searchResult[key]}`
         }
     }).join("");
-    const convertedPaginationResult = paginationResult && Object.keys(paginationResult).map(function (key, index) {
-        if(paginationResult[key]) {
-            return `${index > 0 ? '&' : ''}${key}=${paginationResult[key]}`
-        }
-    }).join("");
-    console.log('convertedSearchResult', convertedSearchResult)
-    return fetch(`http://localhost:3001/users?${convertedSearchResult}${convertedPaginationResult}`, listRequestOptions )
+    return fetch(`http://localhost:3001/users?${convertedSearchResult}`, listRequestOptions )
         .then( ( response ) => handleResponse( response ) )
 }
 
