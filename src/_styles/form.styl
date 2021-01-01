@@ -1,22 +1,26 @@
 .form
+  width 100%
+  background: #F4F2FF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  &Wrap
+    max-width: 1100px;
+    margin: 80px auto;
+    position relative
   &Control
     width: 100%;
-    margin: 8px 0;
     display: inline-block;
-    border 0
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #4a4aff;
     border-radius: 0;
     box-sizing: border-box;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    outline none
-    transition all 0.2s linear
-    &.inputError
-      &:hover, &:focus
-        border-color: red;
-        box-shadow: none;
+    height 48px
+    outline: none;
+    transition: all 0.2s linear;
+    background: rgba(0,0,0,0) !important;
     &:hover, &:focus
       border-color: rgba(0,0,0, 0);
       box-shadow: 0 2px 0 #1682d4;
@@ -36,24 +40,48 @@
       color: #bdbdbd;
       font-weight 500
       font-size 16px
-
-
+    &Error
+      border-color: #D30000;
+      box-shadow: none;
+      &:hover, &:focus
+        border-color: red;
+        box-shadow: none;
+  &Label
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    transform: translateY(-50%);
+    background: rgba(0,0,0, 0);
+    color: #ADABB9;
+    font-size: 16px;
+    font-weight: 500;
+    z-index: 1;
+    right: initial;
+    text-transform none
+  &Icon
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    margin: auto 0;
+    &Fill
+      fill #C6C2DE
+  &PhoneControlWrap
+    .formControl
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid #aaa;
+      border-radius: 0;
+      line-height: 15px;
+      height 56px
+      background: rgba(0,0,0,0) !important;
 .formRow
   display flex
 
 .formGroup
-  width 130px
-  position relative
-  &:first-of-type
-    margin-right 40px
-
-.label
-  position: absolute;
-  margin-top: -11px;
-  background: #ffffff;
-  color #1682d4
-  font-size: 14px;
-  font-weight 500
+  width: 320px;
+  position: relative;
+  padding: 4px 0;
 
 .selectArrow
   width 20px
@@ -113,7 +141,11 @@
   border-color: #aaa;
 
 .inputError
-    border-color red
+    border-color #D30000
 .errorText
-  margin-bottom: 10px;
-  font-weight: 500;
+  &Wrap
+    width: 320px;
+    margin-bottom: 16px;
+  &Item
+    color #EE0004
+    font-size 12px

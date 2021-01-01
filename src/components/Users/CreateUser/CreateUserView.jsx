@@ -5,9 +5,16 @@ import 'react-phone-input-2/lib/style.css'
 import ReactDatepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import {errorMessages, MIN_DATE_OF_BIRTH, regExp} from "../UserStaticData/UserStaticData";
+import {
+  errorMessages, MAX_LENGTH_NAME,
+  MAX_LENGTH_PHONE,
+  MIN_DATE_OF_BIRTH, MIN_LENGTH_NAME,
+  MIN_LENGTH_PHONE,
+  regExp
+} from "../UserStaticData/UserStaticData";
 
 import formStyles from "../../../_styles/form.styl";
+import classnames from "classnames";
 
 export const CreateUserView = ({handleSubmit, onSubmit, errors, control, register, startDate}) => {
   const {firstName: firstNameError, lastName: lastNameError, email: emailError, phone: phoneError, dateOfBirth: dateOfBirthError}  = errors;
@@ -20,75 +27,107 @@ export const CreateUserView = ({handleSubmit, onSubmit, errors, control, registe
 
   return (
     <form
+      className={formStyles.form}
       onSubmit={handleSubmit(onSubmit)}
+      autoComplete="off"
     >
+
       <div className={formStyles.formGroup}>
-        <label htmlFor="firstName">First name</label>
         <input
           id="firstName"
           name="firstName"
+          autoComplete="random"
+          className={classnames(formStyles.formControl, {
+            [formStyles.formControlError]: firstNameError
+          }) }
           ref={register({
-          required: "required",
+          required: "Please enter your name!",
           pattern: {
               message: errorMessages.firstName
             },
-            minLength: 2,
-            maxLength: 80,
+            minLength: MIN_LENGTH_NAME,
+            maxLength: MAX_LENGTH_NAME,
           })}
           type="text"
         />
-        <div>
-          {firstNameError && <span role="alert">{firstNameErrorMessage}</span>}
-          {(firstNameErrorType === "minLength") && <span role="alert">{errorMessages.minLength}</span>}
-          {(firstNameErrorType === "maxLength") && <span role="alert">{errorMessages.maxLength}</span>}
-        </div>
+        <label
+          htmlFor="firstName"
+          className={formStyles.formLabel}
+        >First name *</label>
+      </div>
+      <div className={formStyles.errorTextWrap} >
+        {firstNameError && <span role="alert" className={formStyles.errorTextItem} >{firstNameErrorMessage}</span>}
+        {(firstNameErrorType === "minLength") && <span role="alert" className={formStyles.errorTextItem} >{errorMessages.minNameLength}</span>}
+        {(firstNameErrorType === "maxLength") && <span role="alert" className={formStyles.errorTextItem} >{errorMessages.maxNameLength}</span>}
       </div>
 
       <div className={formStyles.formGroup}>
-        <label htmlFor="lastName">Last name</label>
         <input
           id="lastName"
           name="lastName"
+          autoComplete="random"
+          className={classnames(formStyles.formControl, {
+            [formStyles.formControlError]: lastNameError
+          }) }
           ref={register({
-          required: "required",
+            required: "Please enter your last name!",
           pattern: {
             message: errorMessages.lastName
           },
-          minLength: 2,
-          maxLength: 80,
+          minLength: MIN_LENGTH_NAME,
+          maxLength: MAX_LENGTH_NAME,
         })} type="text"
         />
-        <div>
-          {lastNameError && <span role="alert">{lastNameErrorMessage}</span>}
-          {(lastNameErrorType === "minLength") && <span role="alert">{errorMessages.minLength}</span>}
-          {(lastNameErrorType === "maxLength") && <span role="alert">{errorMessages.maxLength}</span>}
-        </div>
+        <label
+          htmlFor="lastName"
+          className={formStyles.formLabel}
+        >Last name *</label>
+      </div>
+      <div className={formStyles.errorTextWrap} >
+        {lastNameError && <span role="alert" className={formStyles.errorTextItem} >{lastNameErrorMessage}</span>}
+        {(lastNameErrorType === "minLength") && <span role="alert" className={formStyles.errorTextItem} >{errorMessages.minLastNameLength}</span>}
+        {(lastNameErrorType === "maxLength") && <span role="alert" className={formStyles.errorTextItem} >{errorMessages.maxLastNameLength}</span>}
       </div>
 
       <div className={formStyles.formGroup}>
-        <label htmlFor="email">email</label>
         <input
-          id="email" name="email" ref={register({
-          required: "required",
-          pattern: {
+          id="email"
+          name="email"
+          className={classnames(formStyles.formControl, {
+            [formStyles.formControlError]: emailError
+          }) }
+          ref={register({
+            required: "Please tell us your email!",
+            pattern: {
               value: regExp.email,
               message: errorMessages.email
             }
           })}
           type="email"
+          autoComplete="random"
         />
-        <div>
-          {emailError && <span role="alert">{emailErrorMessage}</span>}
-        </div>
+        <label
+          htmlFor="email"
+          className={formStyles.formLabel}
+        >Email *</label>
+      </div>
+      <div className={formStyles.errorTextWrap} >
+        {emailError && <span role="alert" className={formStyles.errorTextItem} >{emailErrorMessage}</span>}
       </div>
 
-      <div className={formStyles.formGroup}>
-        <label htmlFor="phone">phone</label>
+      <div className={classnames(formStyles.formGroup, formStyles.formGroupPhone)}>
         <Controller
           defaultValue=""
           as={
             <PhoneInput
-              id="phone" country={'ua'} placeholder="Enter phone number" inputRef={register}
+              id="phone"
+              country={'ua'}
+              containerClass={formStyles.formPhoneControlWrap}
+              inputClass={classnames(formStyles.formControl, {
+                [formStyles.formControlError]: phoneError
+              }) }
+              placeholder="Enter phone number"
+              inputRef={register}
             />
           }
           name="phone"
@@ -98,24 +137,36 @@ export const CreateUserView = ({handleSubmit, onSubmit, errors, control, registe
             pattern: {
               value: regExp.phone
             },
-            minLength: 9,
-            maxLength: 14,
+            minLength: MIN_LENGTH_PHONE,
+            maxLength: MAX_LENGTH_PHONE,
           }}
           type='text'
         />
-        <div>
-          {phoneError && <span role="alert">{phoneErrorMessage}</span>}
-          {phoneErrorType === "minLength" && <span role="alert">{errorMessages.minLength}</span>}
-          {phoneErrorType === "maxLength" && <span role="alert">{errorMessages.maxLength}</span>}
-        </div>
+        <label
+          htmlFor="phone"
+          className={formStyles.formLabel}
+        >Phone *</label>
+      </div>
+      <div className={formStyles.errorTextWrap} >
+        {phoneError && <span role="alert" className={formStyles.errorTextItem} >{phoneErrorMessage}</span>}
+        {phoneErrorType === "minLength" && <span role="alert" className={formStyles.errorTextItem} >{errorMessages.minPhoneLength}</span>}
+        {phoneErrorType === "maxLength" && <span role="alert" className={formStyles.errorTextItem} >{errorMessages.maxPhoneLength}</span>}
       </div>
 
-      <div className={formStyles.formGroup}>
+      <div className={classnames(formStyles.formGroup, formStyles.formGroupDate)}>
         <Controller
-          defaultValue={startDate} control={control} name="dateOfBirth" rules={{
-          required: errorMessages.dateOfBirth,
-        }} render={({onChange, onBlur, value}) => (
+          defaultValue={startDate}
+          control={control}
+          name="dateOfBirth"
+          rules={{
+            required: errorMessages.dateOfBirth,
+          }}
+          render={({onChange, onBlur, value}) => (
           <ReactDatepicker
+            id='dateOfBirth'
+            className={classnames(formStyles.formControl, {
+              [formStyles.formControlError]: dateOfBirthError
+            }) }
             onChange={onChange}
             onBlur={onBlur}
             selected={value || startDate}
@@ -128,8 +179,15 @@ export const CreateUserView = ({handleSubmit, onSubmit, errors, control, registe
           />
         )}
         />
-        {dateOfBirthError && <span role="alert">{dateOfBirthErrorMessage}</span>}
+        <label
+          htmlFor="dateOfBirth"
+          className={formStyles.formLabel}
+        >Date of birth *</label>
       </div>
+      <div className={formStyles.errorTextWrap} >
+        {dateOfBirthError && <span role="alert" className={formStyles.errorTextItem} >{dateOfBirthErrorMessage}</span>}
+      </div>
+
 
       <button type="submit">SUBMIT</button>
     </form>

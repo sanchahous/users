@@ -13,6 +13,8 @@ import {
   Elements
 } from '@stripe/react-stripe-js';
 
+import './global.css'
+
 class App extends React.Component {
 
   render() {
