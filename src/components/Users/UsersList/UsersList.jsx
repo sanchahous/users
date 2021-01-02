@@ -13,6 +13,7 @@ import {Loader} from "../../Helpers/Loader/Loader";
 
 import tableStyles from "../../../_styles/table.styl";
 import localStyles from "./UsersList.styl";
+import classnames from "classnames";
 
 export const UsersList = () => {
   const dispatch = useDispatch();
@@ -94,29 +95,29 @@ export const UsersList = () => {
         <td
           data-label={firstName}
           className={tableStyles.usersTableCol}
-        >{firstName}</td>
+        ><span>{firstName}</span></td>
         <td
           data-label={lastName}
           className={tableStyles.usersTableCol}
-        >{lastName}</td>
+        ><span>{lastName}</span></td>
         <td
           data-label={email}
-          className={tableStyles.usersTableCol}
-        >{email}</td>
+          className={classnames(tableStyles.usersTableCol, tableStyles.usersTableTextLight)}
+        ><span>{email}</span></td>
         <td
           data-label={phone}
-          className={tableStyles.usersTableCol}
-        >{phone}</td>
+          className={classnames(tableStyles.usersTableCol, tableStyles.usersTableTextLight)}
+        ><span>{phone}</span></td>
         <td
           data-label={dateOfBirth}
-          className={tableStyles.usersTableCol}
-        >{dateOfBirth}</td>
+          className={classnames(tableStyles.usersTableCol, tableStyles.usersTableTextLight)}
+        ><span>{dateOfBirth}</span></td>
         <td
           className={tableStyles.usersTableCol}
         >
           <NavLink
             to={`/users/update/${id}`}
-            className={tableStyles.usersTableUpdateLink}
+            className={localStyles.userUpdateLink}
           >
             <svg className={localStyles.iconUpdate} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M5 18.08V19h.92l9.06-9.06-.92-.92z" opacity=".3"/><path d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19z"/></svg>
           </NavLink>
@@ -127,7 +128,7 @@ export const UsersList = () => {
           <button
             type='button'
             onClick={ () => handleUserRemove(id, firstName) }
-            className={localStyles.userUpdateBtn}
+            className={localStyles.userRemoveBtn}
           >
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 9H8v10h8V9zm-.47 7.12l-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12 1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12z" opacity=".3"/><path d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg>
           </button>
@@ -139,14 +140,13 @@ export const UsersList = () => {
   const usersHeadLayout = usersHeadTitles.map(userHeadTitle => {
     const {key, value} = userHeadTitle
     return (
-      <th className={tableStyles.usersTableHeadCol}>
+      <th className={tableStyles.usersTableHeadCol} >
         <div className={tableStyles.usersTableHeadLabel} >{value}</div>
         <InputFilter
           handleChange={handleSearchChange}
           handleSubmitOnBlur={handleSearchSubmit}
           searchResult={searchResult}
           name={key}
-          value={value}
         />
       </th>
     )

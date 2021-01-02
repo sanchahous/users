@@ -19,17 +19,13 @@
     position: relative;
     width: 1280px;
     margin: 0 auto;
-  &BackgroundWrap
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
   &Col
-    padding 20px 0 20px 20px
-    color #25213B
-    font-weight 500
+    padding: 16px 0 16px 20px;
+    color: #25213b;
+    font-weight: 500;
+    vertical-align: middle;
+    line-height: 1;
+    word-break: break-all;
   &Row
     border-bottom 1px solid #D9D5EC
   &Row, &Col
@@ -40,6 +36,15 @@
     padding-bottom 8px
   &HeadCol
     text-align left
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5)
+      width 19%
+    &:nth-child(6),
+    &:nth-child(7)
+      min-width 60px
   &HeadLabel
     color: #6E6893;
     font-weight 500
@@ -47,47 +52,10 @@
     letter-spacing: 1px;
     text-transform uppercase
     padding 8px 20px 8px 20px
-  &IconsFillLight
-    fill #EAE8F4
-  &IconsFillDark
-    fill #EAE8F4
-  &IconsFillWhite
-    fill #ffffff
-  &DotsLeft,
-  &DotsRight,
-  &Circle,
-  &CircleSmall,
-  &Rectangle,
-  &Triangle
-    position absolute
-  &DotsLeft
-    top: auto;
-    bottom: -11%;
-    left: 4%;
-  &DotsRight
-    top: auto;
-    bottom: 10%;
-    right: 4%;
-    height: 350px;
-  &Circle
-    top: 10%;
-    left: 7%;
-  &CircleSmall
-    top auto
-    bottom 20px
-    right 15%
-  &Rectangle
-    top: 18%;
-    left: 65%;
-  &uTriangle
-    top 0
-    right 0
-  &UpdateLink
-    width 40px
-    display flex
-    justify-content center
-    align-items center
-    margin 0 0 0 20px
+  &TextLight
+    font-weight 400
+    color #6E6893
+    font-size 14px
 
 //RESPONSIVE
 @media media-query-mobile

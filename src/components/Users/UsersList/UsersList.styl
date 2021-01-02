@@ -1,8 +1,74 @@
-.userUpdateBtn
-  background rgba(0,0,0, 0)
-  box-shadow none
-  border none
-  &:hover, &:focus
-    background rgba(0,0,0, 0)
-    box-shadow none
-    border none
+.user
+  &RemoveBtn
+    background: rgba(0,0,0,0);
+    box-shadow: none;
+    border: none;
+    height: auto;
+    line-height: 1;
+    padding 0 16px 0 0
+    &:hover, &:focus
+      background rgba(0,0,0, 0)
+      box-shadow none
+      border none
+      transform none
+    svg
+      fill #ee0004
+  &UpdateLink
+    width 40px
+    display flex
+    justify-content center
+    align-items center
+    margin 0
+    svg
+      fill: #6e6893;
+
+.usersTable
+  &BackgroundWrap
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+  &DotsLeft,
+  &DotsRight,
+  &Circle,
+  &CircleSmall,
+  &Rectangle,
+  &Triangle
+    position absolute
+  &DotsLeft
+    top: auto;
+    bottom: -11%;
+    left: 4%;
+  &DotsRight
+    top: auto;
+    bottom: 10%;
+    right: 4%;
+    height: 350px;
+  &Circle
+    top: 10%;
+    left: 7%;
+  &CircleSmall
+    top auto
+    bottom 20px
+    right 15%
+  &Rectangle
+    top: 18%;
+    left: 65%;
+  &Triangle
+    top 0
+    right 0
+
+  &IconsFillLight
+    fill #EAE8F4
+  &IconsFillDark
+    fill #EAE8F4
+  &IconsFillWhite
+    fill #ffffff
+
+//RESPONSIVE
+@media media-query-mobile
+  .usersCreate
+    &BackgroundWrap
+      display none
