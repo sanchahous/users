@@ -2,14 +2,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  list-style-type none
+  list-style-type: none;
+  margin-top: 0;
+  padding: 12px 0;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-top: 0;
   &Item
     padding: 4px 10px;
     list-style none
     margin-left 8px
+    cursor pointer
+    border-radius: 4px;
+    transition background  0.1s linear, color 0.2s linear
+    &:hover
+      background: #6e6893;
+      color: #ffffff;
+      font-weight: 500;
+    a
+      outline none
 .active
-  background: #6E6893;
-  border-radius: 4px;
-
+  background: #02a56a;
   color: #ffffff;
   font-weight: 500;

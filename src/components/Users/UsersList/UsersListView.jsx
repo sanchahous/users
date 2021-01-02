@@ -21,7 +21,7 @@ export const UsersListView = ({usersListLayout, usersHeadLayout}) => {
           <thead className={tableStyles.usersTableHead}>
             <tr className={tableStyles.usersTableHeadRow} >
               {usersHeadLayout}
-              <th>Update user</th>
+              <th>&nbsp;</th>
             </tr>
           </thead>
           <tbody>

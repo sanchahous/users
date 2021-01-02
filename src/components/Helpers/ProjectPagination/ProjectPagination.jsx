@@ -18,6 +18,8 @@ export const ProjectPagination = ({ handlePageClick, pageCount }) => {
       subContainerClassName={"pages pagination"}
       activeClassName={localStyles.active}
       pageClassName={localStyles.paginationItem}
+      previousClassName={localStyles.paginationItem}
+      nextClassName={localStyles.paginationItem}
     />
   )
 }
