@@ -143,3 +143,15 @@ button[disabled] {
 .react-tel-input {
     font-family: 'Exo', sans-serif;
 }
+
+@media only screen and (max-width: 800px) {
+    body {
+        font-size: 12px;
+    }
+    h1 {
+        font-size: 18px;
+    }
+    button {
+        font-size: 12px;
+    }
+}
