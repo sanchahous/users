@@ -239,6 +239,14 @@
       "phone": "+380345435435",
       "dateOfBirth": "02/01/2021",
       "id": "Dt1al1R"
+    },
+    {
+      "firstName": "Aleksandr",
+      "lastName": "Kuzmenko",
+      "email": "sashatest@gmail.com",
+      "phone": "+380456456456",
+      "dateOfBirth": "08/01/1997",
+      "id": "rer_0bu"
     }
   ]
 }

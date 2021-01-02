@@ -60,6 +60,7 @@ let devConfig = {
                         },
                     },
                     'stylus-loader',
+
                 ],
                 exclude: path.resolve(__dirname, 'node_modules'),
             }

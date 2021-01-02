@@ -32,7 +32,7 @@ export const CreateUserView = ({handleSubmit, onSubmit, errors, control, registe
       onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
     >
-
+      <h1>New User</h1>
       <div className={formStyles.formGroup}>
         <input
           id="firstName"
