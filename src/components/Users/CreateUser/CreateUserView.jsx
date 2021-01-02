@@ -15,6 +15,7 @@ import {
 
 import formStyles from "../../../_styles/form.styl";
 import classnames from "classnames";
+import {useSelector} from "react-redux";
 
 export const CreateUserView = ({handleSubmit, onSubmit, errors, control, register, startDate}) => {
   const {firstName: firstNameError, lastName: lastNameError, email: emailError, phone: phoneError, dateOfBirth: dateOfBirthError}  = errors;

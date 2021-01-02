@@ -1,9 +1,8 @@
 import {userCreateConstants} from '../../../_constants'
 
 const initialState = {
-  data: [],
   loading: false,
-  error: false,
+  error: null,
   success: false
 }
 
@@ -20,17 +19,21 @@ export const userCreate = (state = initialState, action) => {
       };
     case userCreateConstants.USER_CREATE_SUCCESS:
       return {
-        ...state,
-        data : action.data ? action.data : [],
         loading: false,
-        error: false
+        error: null,
+        success: true
       };
     case userCreateConstants.USER_CREATE_FAILURE:
       return {
-        ...state,
-        data : [],
         loading: false,
-        error: action.error
+        error: action.error,
+        success: false
+      };
+    case userCreateConstants.USER_CLEAR:
+      return {
+        loading: false,
+        error: null,
+        success: false
       };
     default:
       return state

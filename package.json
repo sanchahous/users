@@ -21,7 +21,7 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "serve": "concurrently --kill-others \"npm run start\" \"npm run dev\" \"npm run json:server\"",
+    "serve": "concurrently --kill-others \"npm run start\" \"npm run dev\"",
     "start": "node_modules/.bin/webpack-dev-server --open --host localhost --port 3000",
     "dev": "node_modules/.bin/webpack -w --mode development",
     "build": "node_modules/.bin/webpack --mode production",

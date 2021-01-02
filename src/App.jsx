@@ -35,9 +35,8 @@ class App extends React.Component {
             </Route>
             <Route
                 path="/users/create"
-            >
-              <CreateUser />
-            </Route>
+                component={CreateUser}
+            />
             <Route
                 path="/users/update/:id"
                 component={UpdateUser}

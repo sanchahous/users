@@ -31,6 +31,13 @@ const create = (data) => {
   };
 }
 
+const clear = () => {
+  return dispatch => {
+    dispatch( { type: userCreateConstants.USER_CLEAR} );
+  }
+}
+
 export const userCreateActions = {
-  create
+  create,
+  clear
 };
