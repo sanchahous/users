@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 First install node modules using (npm i) command
@@ -21,3 +19,6 @@ You will also see any lint errors in the console.
 ### `npm run build`
 
 Build project in production mode
+
+## Card validation using Stripe:
+Go to user edit page, there you will see button Add card.

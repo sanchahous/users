@@ -153,14 +153,18 @@ tbody {
     font-family: 'Exo', sans-serif;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 760px) {
     body {
         font-size: 12px;
     }
     h1 {
         font-size: 18px;
     }
+    h2 {
+        font-size: 16px;
+    }
     button {
         font-size: 12px;
+        width: 100%
     }
 }

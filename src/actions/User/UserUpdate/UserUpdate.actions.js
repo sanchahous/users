@@ -1,4 +1,4 @@
-import {userUpdateConstants} from '../../../constants';
+import {userCreateConstants, userUpdateConstants} from '../../../constants';
 import {userUpdateService} from '../../../services';
 
 const update = (data, id) => {
@@ -31,8 +31,13 @@ const update = (data, id) => {
   };
 }
 
-
+const clear = () => {
+  return dispatch => {
+    dispatch( { type: userUpdateConstants.USER_CLEAR} );
+  }
+}
 
 export const userUpdateActions = {
-  update
+  update,
+  clear
 };

@@ -10,20 +10,20 @@
       "card": "4242"
     },
     {
-      "firstName": "Rudolf",
+      "firstName": "Rudolf dfgdf",
       "lastName": "Grenmakrr",
       "email": "ruddudtut@gmail.com",
-      "phone": "+++380123562311",
+      "phone": "+++380123562312",
       "dateOfBirth": "18/12/1882",
       "id": "e72e990a-4d20-11eb-ae93-0242ac130002",
-      "card": ""
+      "card": "4242"
     },
     {
-      "firstName": "Joseph",
-      "lastName": "Randolp HH",
-      "email": "jozpoz@gmail.com",
-      "phone": "++380467859308",
-      "dateOfBirth": "15/06/1886",
+      "firstName": "Rudolf dsfs",
+      "lastName": "Grenmakrr sdfsd",
+      "email": "ruddudtut@gmail.com",
+      "phone": "++380123562312",
+      "dateOfBirth": "18/12/1882",
       "id": "e72e9a4a-4d20-11eb-ae93-0242ac130002",
       "card": "4242"
     },
@@ -36,20 +36,13 @@
       "id": "e72e9b26-4d20-11eb-ae93-0242ac130002"
     },
     {
-      "firstName": "Robert",
-      "lastName": "Brown",
+      "firstName": "Robert ds f",
+      "lastName": "Brown dfg dferw",
       "email": "robbro@gmail.com",
-      "phone": "+380324567894",
+      "phone": "++38032456789",
       "dateOfBirth": "11/10/1984",
-      "id": "e72e9cac-4d20-11eb-ae93-0242ac130002"
-    },
-    {
-      "firstName": "Williahm",
-      "lastName": "Johnson",
-      "email": "willjo@gmail.com",
-      "phone": "+380435623456",
-      "dateOfBirth": "17/03/1987",
-      "id": "e72e9d6a-4d20-11eb-ae93-0242ac130002"
+      "id": "e72e9cac-4d20-11eb-ae93-0242ac130002",
+      "card": "4242"
     },
     {
       "firstName": "Christopher",
@@ -261,14 +254,6 @@
       "id": "gy0422Q"
     },
     {
-      "firstName": "Kdsffdsfsdfsd",
-      "lastName": "sdfsd fsdfsdfs",
-      "email": "sdfsdfsdfsdf@gmail.com",
-      "phone": "+380646456456",
-      "dateOfBirth": "02/01/2021",
-      "id": "1TM3c1Z"
-    },
-    {
       "firstName": "dsfsdfsdfs",
       "lastName": "fdfsdfsdfsdf",
       "email": "sdfsdfsdfsdf@gmail.com",
@@ -423,7 +408,7 @@
     {
       "firstName": "Aleksretreandr",
       "lastName": "Kuzmenko",
-      "email": "sashadfsgtest@gmail.com",
+      "email": "sashadfsgfdgdf@gmail.com",
       "phone": "+380456456456",
       "dateOfBirth": "08/01/1997",
       "id": "kiiigghjytj"
@@ -501,6 +486,15 @@
       "dateOfBirth": "03/01/1992",
       "card": "",
       "id": "680o8Hm"
+    },
+    {
+      "firstName": "Last test user",
+      "lastName": "Jdsdsd",
+      "email": "asdasdasd@gmail.com",
+      "phone": "+380435345345",
+      "dateOfBirth": "11/01/1989",
+      "card": "",
+      "id": "HcwkS6s"
     }
   ]
 }

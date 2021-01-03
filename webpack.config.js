@@ -9,7 +9,7 @@ let devConfig = {
     },
     output: {
         path: path.resolve(__dirname, './web'),
-        filename: 'currency.js',
+        filename: 'users.js',
         publicPath: ''
     },
     devServer: {
@@ -76,7 +76,7 @@ let prodConfig = {
     },
     output: {
         path: path.resolve(__dirname, './web'),
-        filename: 'currency.js',
+        filename: 'users.js',
         publicPath: ''
     },
     module: {

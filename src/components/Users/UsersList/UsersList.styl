@@ -60,7 +60,7 @@
     bottom: 1%;
     right: 15%;
   &Rectangle
-    top: 0%;
+    top: 0;
     left: 65%;
   &Triangle
     top: -17%;
@@ -78,9 +78,10 @@
   .usersTable
     &BackgroundWrap
       display none
-@media screen and (max-width: 1024px)
+@media media-query-laptop
   .user
     &UpdateLink
       margin-left: auto;
     &RemoveBtn
       padding-right 8px
+      width auto

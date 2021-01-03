@@ -1,4 +1,4 @@
-import {userUpdateConstants} from '../../../constants'
+import {userCreateConstants, userUpdateConstants} from '../../../constants'
 
 const initialState = {
   data: [],
@@ -30,6 +30,13 @@ export const userUpdate = (state = initialState, action) => {
         data : [],
         loading: false,
         error: action.error,
+        success: false
+      };
+    case userCreateConstants.USER_CLEAR:
+      return {
+        ...state,
+        loading: false,
+        error: null,
         success: false
       };
     default:

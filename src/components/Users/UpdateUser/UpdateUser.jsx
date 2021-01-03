@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import moment from 'moment';
 
 import {useDispatch, useSelector} from "react-redux";
-import {userInfoActions, userUpdateActions} from "../../../actions";
+import {userCreateActions, userInfoActions, userUpdateActions} from "../../../actions";
 import {UpdateUserView} from "./UpdateUserView";
 import {BreadCrumbs} from "../../Repeatable/BreadCrumbs/BreadCrumbs";
 import {Elements} from "@stripe/react-stripe-js";
@@ -13,7 +13,6 @@ import {loadStripe} from "@stripe/stripe-js";
 const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 
 import formStyles from "../../../styles/form.styl";
-import buttonStyles from "../../../styles/buttons.styl";
 import localStyles from "./UpdateUser.styl";
 import {Modal} from "../../Repeatable/Modal/Modal";
 
@@ -31,9 +30,16 @@ export const UpdateUser = (props) => {
   const currentUserInfo = useSelector(state => state.userInfo?.data);
   const {success} = useSelector(state => state.userUpdate);
   const { card, firstName } = currentUserInfo;
+
   useEffect(() => {
     dispatch(userInfoActions.getInfo(userId));
   }, [dispatch])
+
+  useEffect(() => {
+    return () => {
+      dispatch(userCreateActions.clear());
+    }
+  }, [])
 
   const onSubmit = async data => {
     const formData = {
@@ -77,6 +83,7 @@ export const UpdateUser = (props) => {
           <>
             <button
               type='button'
+              className={localStyles.cardRowBtn}
               onClick={handleClickAddCard}
             >{cardFormVisible ? 'Cancel' : 'Add new card'}</button>
             <div className={localStyles.cardRow} >
