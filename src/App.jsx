@@ -13,7 +13,7 @@ import {
   Elements
 } from '@stripe/react-stripe-js';
 
-import './_styles/css/global.css'
+import './styles/css/global.css'
 
 class App extends React.Component {
 
@@ -23,31 +23,27 @@ class App extends React.Component {
           <Switch>
             <Route
               exact
-                path="/"
-            >
-              <Redirect to="/users" />
-            </Route>
-            <Route
-                exact
-                path="/users"
+              path="/users"
             >
               <UsersList />
             </Route>
+
             <Route
                 path="/users/create"
                 component={CreateUser}
             />
+
             <Route
                 path="/users/update/:id"
                 component={UpdateUser}
             />
+
             <Route
-                path="/stripe"
+              path="*"
             >
-              <Elements stripe={stripePromise}>
-                <CheckoutForm />
-              </Elements>
+              <Redirect to="/users" />
             </Route>
+
           </Switch>
 
         </React.Fragment>

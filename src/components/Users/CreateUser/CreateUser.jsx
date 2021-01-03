@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import moment from 'moment';
 
 import {useDispatch, useSelector} from "react-redux";
-import {userCreateActions} from "../../../_actions";
+import {userCreateActions} from "../../../actions";
 import {CreateUserView} from "./CreateUserView";
-import {Modal} from "../../Helpers/Modal/Modal";
-import {BreadCrumbs} from "../../Helpers/BreadCrumbs/BreadCrumbs";
+import {Modal} from "../../Repeatable/Modal/Modal";
+import {BreadCrumbs} from "../../Repeatable/BreadCrumbs/BreadCrumbs";
 
-import formStyles from "../../../_styles/form.styl";
+import formStyles from "../../../styles/form.styl";
 import localStyles from "./Createuser.styl";
 
 export const CreateUser = (props) => {
@@ -31,7 +31,8 @@ export const CreateUser = (props) => {
     const formData = {
       ...data,
       dateOfBirth: moment(data.dateOfBirth).format('DD/MM/yyyy'),
-      phone: `+${data.phone}`
+      phone: `+${data.phone}`,
+      card: ''
     };
     setUserName(data.firstName);
     await dispatch(userCreateActions.create(formData))

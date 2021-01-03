@@ -1,0 +1,31 @@
+@import '../../../styles/mixins/grid.styl'
+
+.pagination
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap wrap
+  list-style-type: none;
+  margin-top: 0;
+  padding: 12px 0;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-top: 0;
+  &Item
+    list-style none
+    margin-left 8px
+    cursor pointer
+    border-radius: 4px;
+    transition background  0.1s linear, color 0.2s linear
+    &:hover
+      background: #6e6893;
+      color: #ffffff;
+      font-weight: 500;
+    a
+      outline none
+      padding: 4px 10px;
+      display inline-block
+.active
+  background: #02a56a;
+  color: #ffffff;
+  font-weight: 500;

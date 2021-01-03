@@ -4,14 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {UsersListView} from "./UsersListView";
 
 import {ITEMS_PER_PAGE, usersHeadTitles} from "./UserListStatic";
-import {userRemoveActions, usersListActions} from "../../../_actions";
+import {userRemoveActions, usersListActions} from "../../../actions";
 
 import {NavLink} from "react-router-dom";
-import {InputFilter} from "../../Helpers/InputFilter/InputFilter";
-import {ProjectPagination} from "../../Helpers/ProjectPagination/ProjectPagination";
-import {Loader} from "../../Helpers/Loader/Loader";
+import {InputFilter} from "../../Repeatable/InputFilter/InputFilter";
+import {ProjectPagination} from "../../Repeatable/ProjectPagination/ProjectPagination";
+import {Loader} from "../../Repeatable/Loader/Loader";
 
-import tableStyles from "../../../_styles/table.styl";
+import tableStyles from "../../../styles/table.styl";
 import localStyles from "./UsersList.styl";
 import classnames from "classnames";
 
@@ -20,9 +20,6 @@ export const UsersList = () => {
   const usersListData = useSelector(state => state.usersList?.list);
   const loading = useSelector(state => state.usersList?.loading);
   const [removedUserId, setRemovedUserId] = useState('')
-
-  console.log('removedUserId', removedUserId)
-
   const perPage = ITEMS_PER_PAGE;
   const [pageCount, setPageCount] = useState(0);
   const [offset, setOffset] = useState(1);
@@ -75,6 +72,7 @@ export const UsersList = () => {
    */
   const handleSearchSubmit = () => {
     dispatch(usersListActions.getList(searchResult));
+    setOffset( 1);
   }
 
   const handleUserRemove = (id, name) => {
@@ -85,31 +83,30 @@ export const UsersList = () => {
    * @param paginatedUsersList Sliced & paginated array of objects
    * sliced by formula: (offset - 1 * perPage), offset * perPage
    */
-  const paginatedUsersList = usersListData.slice(((offset - 1) * perPage), offset * perPage);
-
+  const paginatedUsersList = (usersListData.length > perPage) ? usersListData.slice(((offset - 1) * perPage), offset * perPage) : usersListData;
   /* Preparing layouts for transfer into view component  */
   const usersListLayout = paginatedUsersList.map(userItem => {
     const {id, firstName, lastName, email, phone, dateOfBirth} = userItem;
     return (
       <tr className={tableStyles.usersTableRow} key={email}>
         <td
-          data-label={firstName}
+          data-label='First name'
           className={tableStyles.usersTableCol}
         ><span>{firstName}</span></td>
         <td
-          data-label={lastName}
+          data-label='Last name'
           className={tableStyles.usersTableCol}
         ><span>{lastName}</span></td>
         <td
-          data-label={email}
+          data-label='email'
           className={classnames(tableStyles.usersTableCol, tableStyles.usersTableTextLight)}
         ><span>{email}</span></td>
         <td
-          data-label={phone}
+          data-label='phone'
           className={classnames(tableStyles.usersTableCol, tableStyles.usersTableTextLight)}
         ><span>{phone}</span></td>
         <td
-          data-label={dateOfBirth}
+          data-label='Date of birth'
           className={classnames(tableStyles.usersTableCol, tableStyles.usersTableTextLight)}
         ><span>{dateOfBirth}</span></td>
         <td
@@ -159,7 +156,7 @@ export const UsersList = () => {
         usersListLayout={usersListLayout}
         usersHeadLayout={usersHeadLayout}
       />
-      {usersListData.length > 5 &&
+      {(usersListData.length > perPage) &&
         <ProjectPagination
           handlePageClick={handlePageClick}
           pageCount={pageCount}

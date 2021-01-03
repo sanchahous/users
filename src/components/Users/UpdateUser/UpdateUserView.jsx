@@ -15,7 +15,7 @@ import {
   regExp
 } from "../UserStaticData/UserStaticData";
 
-import formStyles from "../../../_styles/form.styl";
+import formStyles from "../../../styles/form.styl";
 import classnames from "classnames";
 
 export const UpdateUserView = ({handleSubmit, onSubmit, errors, control, register, startDate, currentUserInfo}) => {

@@ -1,0 +1,40 @@
+.link
+  position: relative;
+  color: #1682d4;
+  text-decoration: none;
+  font-weight 400
+  font-size: 16px;
+  text-align center
+  box-shadow none
+  background rgba(0,0,0, 0)
+  text-transform none
+  padding 0
+  height auto
+  line-height 1
+  &::before
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: #1682d4;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  &:hover::before
+    visibility: visible;
+    transform: scaleX(1);
+  &:hover, &:focus
+    box-shadow none
+    text-transform none
+    background rgba(0,0,0, 0)
+    text-decoration: underline;
+    color: #1682d4;
+    text-decoration none
+  &_bottomSpace
+    margin-bottom 20px
+  &__wrapper
+    display flex
+    justify-content center
+

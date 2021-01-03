@@ -1,3 +1,4 @@
+@import '../../../styles/mixins/grid.styl'
 .user
   &RemoveBtn
     background: rgba(0,0,0,0);
@@ -11,7 +12,10 @@
       box-shadow none
       border none
       transform none
+      svg
+        fill #af0003
     svg
+      transition all 0.2s linear
       fill #ee0004
   &UpdateLink
     width 40px
@@ -20,7 +24,11 @@
     align-items center
     margin 0
     svg
-      fill: #6e6893;
+      fill #6e6893
+      transition all 0.2s linear
+    &:hover, &:focus
+      svg
+        fill #4b497b
 
 .usersTable
   &BackgroundWrap
@@ -39,26 +47,24 @@
     position absolute
   &DotsLeft
     top: auto;
-    bottom: -11%;
-    left: 4%;
+    bottom: -8%;
+    left: -6%;
   &DotsRight
-    top: auto;
-    bottom: 10%;
-    right: 4%;
+    top: 50%;
+    bottom: auto;
+    right: -80px;
     height: 350px;
-  &Circle
-    top: 10%;
-    left: 7%;
+    transform: translateY(-50%);
   &CircleSmall
-    top auto
-    bottom 20px
-    right 15%
+    top: auto;
+    bottom: 1%;
+    right: 15%;
   &Rectangle
-    top: 18%;
+    top: 0%;
     left: 65%;
   &Triangle
-    top 0
-    right 0
+    top: -17%;
+    right: -5%;
 
   &IconsFillLight
     fill #EAE8F4
@@ -68,7 +74,13 @@
     fill #ffffff
 
 //RESPONSIVE
-@media media-query-mobile
-  .usersCreate
+@media media-query-desktop
+  .usersTable
     &BackgroundWrap
       display none
+@media screen and (max-width: 1024px)
+  .user
+    &UpdateLink
+      margin-left: auto;
+    &RemoveBtn
+      padding-right 8px

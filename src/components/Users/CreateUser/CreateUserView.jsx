@@ -13,7 +13,7 @@ import {
   regExp
 } from "../UserStaticData/UserStaticData";
 
-import formStyles from "../../../_styles/form.styl";
+import formStyles from "../../../styles/form.styl";
 import classnames from "classnames";
 import {useSelector} from "react-redux";
 

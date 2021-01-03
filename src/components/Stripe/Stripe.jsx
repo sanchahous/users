@@ -7,7 +7,8 @@ import {
 
 import localStyles from './Strype.styl'
 import './Strype.css';
-
+import {userUpdateActions} from "../../actions";
+import {useDispatch, useSelector} from "react-redux";
 const CARD_OPTIONS = {
   iconStyle: 'solid',
   style: {
@@ -15,7 +16,6 @@ const CARD_OPTIONS = {
       iconColor: '#c4f0ff',
       color: '#fff',
       fontWeight: 500,
-      fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '16px',
       fontSmoothing: 'antialiased',
       ':-webkit-autofill': {
@@ -101,6 +101,9 @@ const ResetButton = ({onClick}) => (
 );
 
 export const CheckoutForm = () => {
+  const dispatch = useDispatch();
+  const userId = useSelector(state => state.userInfo?.data?.id);
+  console.log('userId', userId)
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
@@ -142,7 +145,8 @@ export const CheckoutForm = () => {
     if (payload.error) {
       setError(payload.error);
     } else {
-      setPaymentMethod(payload.paymentMethod);
+      await setPaymentMethod(payload.paymentMethod);
+      dispatch( userUpdateActions.update({card: payload.paymentMethod.card.last4}, userId) )
     }
   };
 
@@ -219,17 +223,9 @@ export const CheckoutForm = () => {
         </fieldset>
         {error && <ErrorMessage>{error.message}</ErrorMessage>}
         <SubmitButton processing={processing} error={error} disabled={!stripe}>
-          Pay $25
+          Save card
         </SubmitButton>
       </form>
     </div>
   );
-};
-
-const ELEMENTS_OPTIONS = {
-  fonts: [
-    {
-      cssSrc: 'https://fonts.googleapis.com/css?family=Roboto',
-    },
-  ],
 };

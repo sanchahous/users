@@ -239,9 +239,12 @@ button {
 }
 
 .Result {
-    margin-top: 50px;
+    margin-top: 0;
+    margin-left: 20px;
     text-align: center;
     animation: fade 200ms ease-out;
+    background: rgba(148, 145, 187, 0.69);
+    padding: 20px;
 }
 
 .ResultTitle {
